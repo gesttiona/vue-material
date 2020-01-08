@@ -1,6 +1,6 @@
 /*!
- * vue-material v1.0.0-beta-10.2
- * Made with <3 by marcosmoura 2019
+ * vue-material v1.0.0-beta-11
+ * Made with <3 by marcosmoura 2020
  * Released under the MIT License.
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -8733,6 +8733,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
 
 var _raf = __webpack_require__(9);
 
@@ -8765,12 +8768,12 @@ var _MdFieldMixin2 = _interopRequireDefault(_MdFieldMixin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var defaultOffset = {
-  x: -15,
-  y: -48
+  x: 0,
+  y: 0
 };
 
 exports.default = {
-  name: 'MdSelect',
+  name: "MdSelect",
   components: {
     MdInput: _MdInput2.default,
     MdMenu: _MdMenu2.default,
@@ -8785,7 +8788,7 @@ exports.default = {
     id: String,
     name: String
   },
-  inject: ['MdField'],
+  inject: ["MdField"],
   data: function data() {
     return {
       menuStyles: {},
@@ -8862,13 +8865,13 @@ exports.default = {
         var menu = this.$refs.menu.$refs.container;
 
         if (menu) {
-          var selected = target || menu.querySelector('.md-selected');
+          var selected = target || menu.querySelector(".md-selected");
 
           if (selected) {
             this.scrollToSelectedOption(selected, menu);
             this.offset.y = defaultOffset.y - selected.offsetTop + menu.scrollTop + 8;
             this.menuStyles = {
-              'transform-origin': '0 ' + Math.abs(this.offset.y) + 'px'
+              "transform-origin": "0 " + Math.abs(this.offset.y) + "px"
             };
           } else {
             this.offset.y = defaultOffset.y + 1;
@@ -8884,7 +8887,7 @@ exports.default = {
 
       this.setOffsets();
       this.MdField.focused = true;
-      this.$emit('md-opened');
+      this.$emit("md-opened");
     },
     applyHighlight: function applyHighlight() {
       this.MdField.focused = false;
@@ -8892,7 +8895,7 @@ exports.default = {
       this.$refs.input.$el.focus();
     },
     onClose: function onClose() {
-      this.$emit('md-closed');
+      this.$emit("md-closed");
       if (this.didMount) {
         this.applyHighlight();
       }
@@ -8938,7 +8941,7 @@ exports.default = {
       if (textContent) {
         this.setContent(textContent);
       } else {
-        this.setContent('');
+        this.setContent("");
       }
     },
     setMultipleValue: function setMultipleValue(value) {
@@ -8963,7 +8966,7 @@ exports.default = {
         }
       });
 
-      this.setContent(content.join(', '));
+      this.setContent(content.join(", "));
     },
     setFieldContent: function setFieldContent() {
       if (this.multiple) {
@@ -8999,7 +9002,7 @@ exports.default = {
       }
     },
     emitSelected: function emitSelected(value) {
-      this.$emit('md-selected', value);
+      this.$emit("md-selected", value);
     }
   },
   mounted: function mounted() {
@@ -9571,7 +9574,7 @@ exports.default = new _MdComponent2.default({
         this.MdMenu.bodyClickObserver = new _MdObserveEvent2.default(document.body, 'click', function ($event) {
           $event.stopPropagation();
 
-          if (!_this3.isMenu($event) && (_this3.MdMenu.closeOnClick || _this3.isBackdropExpectMenu($event))) {
+          if (!_this3.isMenuContentEl($event) && (_this3.MdMenu.closeOnClick || _this3.isBackdropExpectMenu($event))) {
             _this3.MdMenu.active = false;
             _this3.MdMenu.bodyClickObserver.destroy();
             _this3.MdMenu.windowResizeObserver.destroy();
@@ -31211,7 +31214,8 @@ var render = function() {
                     name: _vm.name,
                     disabled: _vm.disabled,
                     required: _vm.required,
-                    value: _vm.value
+                    value: _vm.value,
+                    checked: _vm.isSelected
                   },
                   false
                 )
