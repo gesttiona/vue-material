@@ -59,7 +59,7 @@ import MdInput from "../MdInput/MdInput";
 import MdFieldMixin from "../MdFieldMixin";
 
 const defaultOffset = {
-  x: 0,
+  x: 5,
   y: 0
 };
 

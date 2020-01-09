@@ -7285,6 +7285,48 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var daysInAWeek = 7;
 
@@ -7297,7 +7339,7 @@ var getElements = function getElements(el, selector) {
 };
 
 exports.default = new _MdComponent2.default({
-  name: 'MdDatepickerDialog',
+  name: "MdDatepickerDialog",
   components: {
     MdPopover: _MdPopover2.default,
     MdArrowRightIcon: _MdArrowRightIcon2.default,
@@ -7309,6 +7351,10 @@ exports.default = new _MdComponent2.default({
     mdDisabledDates: [Array, Function],
     mdImmediately: {
       type: Boolean,
+      default: true
+    },
+    mdShowHeader: {
+      type: Boolean,
       default: false
     }
   },
@@ -7318,7 +7364,7 @@ exports.default = new _MdComponent2.default({
       selectedDate: null,
       showDialog: false,
       monthAction: null,
-      currentView: 'day',
+      currentView: "day",
       contentStyles: {},
       availableYears: null
     };
@@ -7339,7 +7385,7 @@ exports.default = new _MdComponent2.default({
     },
     popperSettings: function popperSettings() {
       return {
-        placement: 'bottom-start',
+        placement: "bottom-start",
         modifiers: {
           keepTogether: {
             enabled: true
@@ -7351,11 +7397,11 @@ exports.default = new _MdComponent2.default({
       };
     },
     calendarClasses: function calendarClasses() {
-      if (this.monthAction === 'next') {
-        return 'md-next';
+      if (this.monthAction === "next") {
+        return "md-next";
       }
 
-      return 'md-previous';
+      return "md-previous";
     },
     firstDayOfMonth: function firstDayOfMonth() {
       return (0, _startOfMonth2.default)(this.currentDate).getDay();
@@ -7424,14 +7470,14 @@ exports.default = new _MdComponent2.default({
       var _this2 = this;
 
       this.$nextTick().then(function () {
-        if (_this2.currentView === 'year') {
-          var activeYear = getElements(_this2.$el, '.md-datepicker-year-button.md-datepicker-selected');
+        if (_this2.currentView === "year") {
+          var activeYear = getElements(_this2.$el, ".md-datepicker-year-button.md-datepicker-selected");
 
           if (activeYear.length) {
             activeYear[0].scrollIntoView({
-              behavior: 'instant',
-              block: 'center',
-              inline: 'center'
+              behavior: "instant",
+              block: "center",
+              inline: "center"
             });
           }
         }
@@ -7440,13 +7486,13 @@ exports.default = new _MdComponent2.default({
   },
   methods: {
     setContentStyles: function setContentStyles() {
-      var months = getElements(this.$el, '.md-datepicker-month');
+      var months = getElements(this.$el, ".md-datepicker-month");
 
       if (months.length) {
         var nextMonth = months[months.length - 1];
 
         this.contentStyles = {
-          height: nextMonth.offsetHeight + 10 + 'px'
+          height: nextMonth.offsetHeight + 10 + "px"
         };
       }
     },
@@ -7475,7 +7521,7 @@ exports.default = new _MdComponent2.default({
 
         if (Array.isArray(this.mdDisabledDates)) {
           return this.handleDisabledDateByArray(targetDate);
-        } else if (typeof this.mdDisabledDates === 'function') {
+        } else if (typeof this.mdDisabledDates === "function") {
           return this.mdDisabledDates(targetDate);
         }
       }
@@ -7487,32 +7533,32 @@ exports.default = new _MdComponent2.default({
       return (0, _isSameDay2.default)(new Date(), (0, _setDate2.default)(this.currentDate, day));
     },
     previousMonth: function previousMonth() {
-      this.monthAction = 'previous';
+      this.monthAction = "previous";
       this.currentDate = (0, _subMonths2.default)(this.currentDate, 1);
     },
     nextMonth: function nextMonth() {
-      this.monthAction = 'next';
+      this.monthAction = "next";
       this.currentDate = (0, _addMonths2.default)(this.currentDate, 1);
     },
     switchMonth: function switchMonth(index) {
       this.currentDate = (0, _setMonth2.default)(this.currentDate, index);
-      this.currentView = 'day';
+      this.currentView = "day";
     },
     switchYear: function switchYear(year) {
       this.currentDate = (0, _setYear2.default)(this.currentDate, year);
-      this.currentView = 'month';
+      this.currentView = "month";
     },
     selectDate: function selectDate(day) {
       this.currentDate = (0, _setDate2.default)(this.currentDate, day);
       this.selectedDate = this.currentDate;
 
       if (this.mdImmediately) {
-        this.$emit('update:mdDate', this.selectedDate);
+        this.$emit("update:mdDate", this.selectedDate);
         this.closeDialog();
       }
     },
     closeDialog: function closeDialog() {
-      this.$emit('md-closed');
+      this.$emit("md-closed");
     },
     onClose: function onClose() {
       this.closeDialog();
@@ -7521,13 +7567,13 @@ exports.default = new _MdComponent2.default({
       this.closeDialog();
     },
     onConfirm: function onConfirm() {
-      this.$emit('update:mdDate', this.selectedDate);
+      this.$emit("update:mdDate", this.selectedDate);
       this.closeDialog();
     },
     resetDate: function resetDate() {
       this.currentDate = this.mdDate || new Date();
       this.selectedDate = this.mdDate;
-      this.currentView = 'day';
+      this.currentView = "day";
     }
   },
   created: function created() {
@@ -8768,7 +8814,7 @@ var _MdFieldMixin2 = _interopRequireDefault(_MdFieldMixin);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var defaultOffset = {
-  x: 0,
+  x: 5,
   y: 0
 };
 
@@ -26609,47 +26655,51 @@ var render = function() {
               class: [_vm.$mdActiveTheme]
             },
             [
-              _c("div", { staticClass: "md-datepicker-header" }, [
-                _c(
-                  "span",
-                  {
-                    staticClass: "md-datepicker-year-select",
-                    class: { "md-selected": _vm.currentView === "year" },
-                    on: {
-                      click: function($event) {
-                        _vm.currentView = "year"
-                      }
-                    }
-                  },
-                  [_vm._v(_vm._s(_vm.selectedYear))]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "md-datepicker-date-select",
-                    class: { "md-selected": _vm.currentView !== "year" },
-                    on: {
-                      click: function($event) {
-                        _vm.currentView = "day"
-                      }
-                    }
-                  },
-                  [
-                    _c("strong", { staticClass: "md-datepicker-dayname" }, [
-                      _vm._v(_vm._s(_vm.shortDayName) + ", ")
-                    ]),
+              _vm.mdShowHeader
+                ? _c("div", { staticClass: "md-datepicker-header" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "md-datepicker-year-select",
+                        class: { "md-selected": _vm.currentView === "year" },
+                        on: {
+                          click: function($event) {
+                            _vm.currentView = "year"
+                          }
+                        }
+                      },
+                      [_vm._v(_vm._s(_vm.selectedYear))]
+                    ),
                     _vm._v(" "),
-                    _c("strong", { staticClass: "md-datepicker-monthname" }, [
-                      _vm._v(_vm._s(_vm.shortMonthName))
-                    ]),
-                    _vm._v(" "),
-                    _c("strong", { staticClass: "md-datepicker-day" }, [
-                      _vm._v(_vm._s(_vm.currentDay))
-                    ])
-                  ]
-                )
-              ]),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "md-datepicker-date-select",
+                        class: { "md-selected": _vm.currentView !== "year" },
+                        on: {
+                          click: function($event) {
+                            _vm.currentView = "day"
+                          }
+                        }
+                      },
+                      [
+                        _c("strong", { staticClass: "md-datepicker-dayname" }, [
+                          _vm._v(_vm._s(_vm.shortDayName) + ",")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "strong",
+                          { staticClass: "md-datepicker-monthname" },
+                          [_vm._v(_vm._s(_vm.shortMonthName))]
+                        ),
+                        _vm._v(" "),
+                        _c("strong", { staticClass: "md-datepicker-day" }, [
+                          _vm._v(_vm._s(_vm.currentDay))
+                        ])
+                      ]
+                    )
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c(
                 "div",
@@ -26749,23 +26799,26 @@ var render = function() {
                                           _vm._l(
                                             _vm.locale.shorterDays,
                                             function(day, index) {
-                                              return index >=
-                                                _vm.firstDayOfAWeek
-                                                ? _c("span", { key: index }, [
-                                                    _vm._v(_vm._s(day))
-                                                  ])
-                                                : _vm._e()
+                                              return [
+                                                index >= _vm.firstDayOfAWeek
+                                                  ? _c("span", { key: index }, [
+                                                      _vm._v(_vm._s(day))
+                                                    ])
+                                                  : _vm._e()
+                                              ]
                                             }
                                           ),
                                           _vm._v(" "),
                                           _vm._l(
                                             _vm.locale.shorterDays,
                                             function(day, index) {
-                                              return index < _vm.firstDayOfAWeek
-                                                ? _c("span", { key: index }, [
-                                                    _vm._v(_vm._s(day))
-                                                  ])
-                                                : _vm._e()
+                                              return [
+                                                index < _vm.firstDayOfAWeek
+                                                  ? _c("span", { key: index }, [
+                                                      _vm._v(_vm._s(day))
+                                                    ])
+                                                  : _vm._e()
+                                              ]
                                             }
                                           )
                                         ],
@@ -26927,15 +26980,6 @@ var render = function() {
                     "md-dialog-actions",
                     { staticClass: "md-datepicker-body-footer" },
                     [
-                      _c(
-                        "md-button",
-                        {
-                          staticClass: "md-primary",
-                          on: { click: _vm.onCancel }
-                        },
-                        [_vm._v("Cancel")]
-                      ),
-                      _vm._v(" "),
                       !_vm.mdImmediately
                         ? _c(
                             "md-button",
