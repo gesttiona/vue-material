@@ -5853,6 +5853,21 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 var _vue = __webpack_require__(8);
 
@@ -5905,7 +5920,7 @@ var _MdInput2 = _interopRequireDefault(_MdInput);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  name: 'MdDatepicker',
+  name: "MdDatepicker",
   components: {
     MdOverlay: _MdOverlay2.default,
     MdDateIcon: _MdDateIcon2.default,
@@ -5931,7 +5946,7 @@ exports.default = {
     mdModelType: _extends({
       type: Function,
       default: Date
-    }, (0, _MdPropValidator2.default)('md-model-type', [Date, String, Number])),
+    }, (0, _MdPropValidator2.default)("md-model-type", [Date, String, Number])),
     MdDebounce: {
       type: Number,
       default: 1000
@@ -5941,7 +5956,7 @@ exports.default = {
     return {
       showDialog: false,
       // String for input
-      inputDate: '',
+      inputDate: "",
       // Date for real value
       localDate: null
     };
@@ -5951,10 +5966,10 @@ exports.default = {
       return this.$material.locale;
     },
     type: function type() {
-      return this.mdOverrideNative ? 'text' : 'date';
+      return this.mdOverrideNative ? "text" : "date";
     },
     dateFormat: function dateFormat() {
-      return this.locale.dateFormat || 'yyyy-MM-dd';
+      return this.locale.dateFormat || "yyyy-MM-dd";
     },
     modelType: function modelType() {
       if (this.isModelTypeString) {
@@ -5971,13 +5986,13 @@ exports.default = {
       return this.value === null || this.value === undefined;
     },
     isModelTypeString: function isModelTypeString() {
-      return typeof this.value === 'string';
+      return typeof this.value === "string";
     },
     isModelTypeNumber: function isModelTypeNumber() {
       return Number.isInteger(this.value) && this.value >= 0;
     },
     isModelTypeDate: function isModelTypeDate() {
-      return _typeof(this.value) === 'object' && this.value instanceof Date && (0, _isValid2.default)(this.value);
+      return _typeof(this.value) === "object" && this.value instanceof Date && (0, _isValid2.default)(this.value);
     },
     localString: function localString() {
       return this.localDate && (0, _format2.default)(this.localDate, this.dateFormat);
@@ -5992,11 +6007,11 @@ exports.default = {
     pattern: function pattern() {
       return this.dateFormat.replace(/yyyy|MM|dd/g, function (match) {
         switch (match) {
-          case 'yyyy':
-            return '[0-9]{4}';
-          case 'MM':
-          case 'dd':
-            return '[0-9]{2}';
+          case "yyyy":
+            return "[0-9]{4}";
+          case "MM":
+          case "dd":
+            return "[0-9]{2}";
         }
       });
     }
@@ -6008,17 +6023,17 @@ exports.default = {
     localDate: function localDate() {
       this.inputDate = this.localString;
       if (this.modelType === Date) {
-        this.$emit('input', this.localDate);
+        this.$emit("input", this.localDate);
       }
     },
     localString: function localString() {
       if (this.modelType === String) {
-        this.$emit('input', this.localString);
+        this.$emit("input", this.localString);
       }
     },
     localNumber: function localNumber() {
       if (this.modelType === Number) {
-        this.$emit('input', this.localNumber);
+        this.$emit("input", this.localNumber);
       }
     },
 
@@ -6031,13 +6046,13 @@ exports.default = {
     mdModelType: function mdModelType(type) {
       switch (type) {
         case Date:
-          this.$emit('input', this.localDate);
+          this.$emit("input", this.localDate);
           break;
         case String:
-          this.$emit('input', this.localString);
+          this.$emit("input", this.localString);
           break;
         case Number:
-          this.$emit('input', this.localNumber);
+          this.$emit("input", this.localNumber);
           break;
       }
     },
@@ -6052,9 +6067,9 @@ exports.default = {
       if (!_isFirefox2.default || this.mdOverrideNative) {
         this.showDialog = !this.showDialog;
         if (this.showDialog) {
-          this.$emit('md-opened');
+          this.$emit("md-opened");
         } else {
-          this.$emit('md-closed');
+          this.$emit("md-closed");
         }
       } else {
         this.$refs.input.$el.click();
@@ -6087,10 +6102,10 @@ exports.default = {
         if ((0, _isValid2.default)(parsedDate)) {
           this.localDate = (0, _parse2.default)(this.value, this.dateFormat, new Date());
         } else {
-          _vue2.default.util.warn('The datepicker value is not a valid date. Given value: ' + this.value + ', format: ' + this.dateFormat);
+          _vue2.default.util.warn("The datepicker value is not a valid date. Given value: " + this.value + ", format: " + this.dateFormat);
         }
       } else {
-        _vue2.default.util.warn('The datepicker value is not a valid date. Given value: ' + this.value);
+        _vue2.default.util.warn("The datepicker value is not a valid date. Given value: " + this.value);
       }
     }
   },
@@ -27157,7 +27172,11 @@ var render = function() {
   return _c(
     "md-field",
     {
-      class: ["md-datepicker", { "md-native": !this.mdOverrideNative }],
+      class: [
+        "md-datepicker",
+        "md-form-group",
+        { "md-native": !this.mdOverrideNative }
+      ],
       attrs: { "md-clearable": "" }
     },
     [
@@ -27169,6 +27188,8 @@ var render = function() {
           }
         }
       }),
+      _vm._v(" "),
+      _vm._t("label"),
       _vm._v(" "),
       _c("md-input", {
         ref: "input",
