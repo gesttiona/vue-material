@@ -23,28 +23,28 @@
 </template>
 
 <script>
-  export default {
-    name: 'BasicDatepicker',
-    data: () => ({
-      selectedDate: null
-    }),
-    computed: {
-      firstDayOfAWeek: {
-        get () {
-          return this.$material.locale.firstDayOfAWeek
-        },
-        set (val) {
-          this.$material.locale.firstDayOfAWeek = val
-        }
+export default {
+  name: "BasicDatepicker",
+  data: () => ({
+    selectedDate: null
+  }),
+  computed: {
+    firstDayOfAWeek: {
+      get() {
+        return this.$material.locale.firstDayOfAWeek;
       },
-      dateFormat: {
-        get () {
-          return this.$material.locale.dateFormat
-        },
-        set (val) {
-          this.$material.locale.dateFormat = val
-        }
+      set(val) {
+        this.$material.locale.firstDayOfAWeek = val;
+      }
+    },
+    dateFormat: {
+      get() {
+        return this.$material.locale.dateFormat;
+      },
+      set(val) {
+        this.$material.locale.dateFormat = val;
       }
     }
   }
+};
 </script>
