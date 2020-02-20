@@ -5950,6 +5950,10 @@ exports.default = {
     MdDebounce: {
       type: Number,
       default: 1000
+    },
+    mdClearable: {
+      type: Boolean,
+      default: true
     }
   },
   data: function data() {
@@ -27177,7 +27181,7 @@ var render = function() {
         "md-form-group",
         { "md-native": !this.mdOverrideNative }
       ],
-      attrs: { "md-clearable": "" }
+      attrs: { "md-clearable": _vm.mdClearable }
     },
     [
       _c("md-date-icon", {
