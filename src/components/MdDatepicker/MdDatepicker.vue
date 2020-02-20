@@ -1,7 +1,7 @@
 <template>
   <md-field
     :class="['md-datepicker', 'md-form-group', { 'md-native': !this.mdOverrideNative }]"
-    md-clearable
+    :md-clearable="mdClereable"
   >
     <md-date-icon class="md-date-icon" @click.native="toggleDialog" />
     <slot name="label" />
@@ -80,6 +80,10 @@ export default {
     MdDebounce: {
       type: Number,
       default: 1000
+    },
+    mdClereable: {
+      type: Boolean,
+      default: true
     }
   },
   data: () => ({
