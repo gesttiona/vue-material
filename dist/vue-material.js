@@ -5868,6 +5868,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
 
 var _vue = __webpack_require__(8);
 
@@ -5954,6 +5955,10 @@ exports.default = {
     mdClearable: {
       type: Boolean,
       default: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data: function data() {
@@ -6068,15 +6073,17 @@ exports.default = {
   },
   methods: {
     toggleDialog: function toggleDialog() {
-      if (!_isFirefox2.default || this.mdOverrideNative) {
-        this.showDialog = !this.showDialog;
-        if (this.showDialog) {
-          this.$emit("md-opened");
+      if (!this.disabled) {
+        if (!_isFirefox2.default || this.mdOverrideNative) {
+          this.showDialog = !this.showDialog;
+          if (this.showDialog) {
+            this.$emit("md-opened");
+          } else {
+            this.$emit("md-closed");
+          }
         } else {
-          this.$emit("md-closed");
+          this.$refs.input.$el.click();
         }
-      } else {
-        this.$refs.input.$el.click();
       }
     },
     onFocus: function onFocus() {
@@ -27197,7 +27204,7 @@ var render = function() {
       _vm._v(" "),
       _c("md-input", {
         ref: "input",
-        attrs: { type: _vm.type, pattern: _vm.pattern },
+        attrs: { type: _vm.type, pattern: _vm.pattern, disabled: _vm.disabled },
         nativeOn: {
           focus: function($event) {
             return _vm.onFocus($event)

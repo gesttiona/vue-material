@@ -11,6 +11,7 @@
       v-model="inputDate"
       @focus.native="onFocus"
       :pattern="pattern"
+      :disabled="disabled"
     />
 
     <slot />
@@ -84,6 +85,10 @@ export default {
     mdClearable: {
       type: Boolean,
       default: true
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   data: () => ({
@@ -199,15 +204,17 @@ export default {
   },
   methods: {
     toggleDialog() {
-      if (!isFirefox || this.mdOverrideNative) {
-        this.showDialog = !this.showDialog;
-        if (this.showDialog) {
-          this.$emit("md-opened");
+      if (!this.disabled) {
+        if (!isFirefox || this.mdOverrideNative) {
+          this.showDialog = !this.showDialog;
+          if (this.showDialog) {
+            this.$emit("md-opened");
+          } else {
+            this.$emit("md-closed");
+          }
         } else {
-          this.$emit("md-closed");
+          this.$refs.input.$el.click();
         }
-      } else {
-        this.$refs.input.$el.click();
       }
     },
     onFocus() {
